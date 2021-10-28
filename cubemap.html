@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="town" src="textures/town.jpg">
+      </a-assets>
+    
+      <a-box position="-1 0.5 -5" color="green" roughness="0"></a-box>
+      <a-sphere position="1 0.5 5" color="yellow" roughness="0"></a-sphere>
+
+      <a-sky src="#town"></a-sky>
+    </a-scene>
+  </body>
+</html>
