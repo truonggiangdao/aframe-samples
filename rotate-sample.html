@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <!-- <img id="bg-texture" src="textures/town.jpg"> -->
+        <!-- <img id="bg-transparent" src="textures/block.png"> -->
+        <a-asset-item id="the-model" src="beagle/scene.gltf"></a-asset-item>
+
+
+        <img id="px" src="textures/cube-town/px.png">
+        <img id="nx" src="textures/cube-town/nx.png">
+        <img id="py" src="textures/cube-town/py.png">
+        <img id="ny" src="textures/cube-town/ny.png">
+        <img id="pz" src="textures/cube-town/pz.png">
+        <img id="nz" src="textures/cube-town/nz.png">
+
+        <!-- <a-cubemap id="sky">
+          <img src="textures/cube/px.jpeg">
+          <img src="textures/cube/nx.jpeg">
+          <img src="textures/cube/py.jpeg">
+          <img src="textures/cube/ny.jpeg">
+          <img src="textures/cube/pz.jpeg">
+          <img src="textures/cube/nz.jpeg">
+        </a-cubemap> -->
+      </a-assets>
+
+      <!-- <a-entity geometry="primitive: box; depth: 10; height: 10; width: 10;" material="envMap: #sky; shader: flat; roughness: 0"></a-entity> -->
+
+      <a-entity camera orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 10; initialPosition: -1 0 1; autoRotate: false; autoRotateSpeed: 0.1;"></a-entity>
+
+      <a-entity light="type: point; color: white; intensity: 1.5; castShadow: true;" position="1 5 1"></a-entity>
+
+      <a-entity scale="10 10 10" position="0 -1 0" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
+
+      <a-plane src="#pz" height="10" width="10" position="0 4 -5" rotation="0 0 0" shadow="receive: true"></a-plane>
+      <a-plane src="#py" height="10" width="10" position="0 9 0" rotation="90 0 0" shadow="receive: true"></a-plane>
+      <a-plane src="#ny" height="10" width="10" position="0 -1 0" rotation="-90 0 0" shadow="receive: true"></a-plane>
+    </a-scene>
+  </body>
+</html>
