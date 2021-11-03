@@ -33,13 +33,17 @@
 
       <a-entity camera orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 10; initialPosition: -1 0 1; autoRotate: false; autoRotateSpeed: 0.1;"></a-entity>
 
-      <a-entity light="type: point; color: white; intensity: 1.5; castShadow: true;" position="1 5 1"></a-entity>
+      <!-- <a-entity light="type: point; color: white; intensity: 1.5; castShadow: true;" position="1 5 1"></a-entity> -->
+      <a-entity light="type: ambient; color: white"></a-entity>
 
       <a-entity scale="10 10 10" position="0 -1 0" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
 
       <a-plane src="#pz" height="10" width="10" position="0 4 -5" rotation="0 0 0" shadow="receive: true"></a-plane>
       <a-plane src="#py" height="10" width="10" position="0 9 0" rotation="90 0 0" shadow="receive: true"></a-plane>
       <a-plane src="#ny" height="10" width="10" position="0 -1 0" rotation="-90 0 0" shadow="receive: true"></a-plane>
+      <a-plane src="#nx" height="10" width="10" position="-5 4 0" rotation="0 90 0" shadow="receive: true"></a-plane>
+      <a-plane src="#px" height="10" width="10" position="5 4 0" rotation="0 -90 0" shadow="receive: true"></a-plane>
+      <a-plane src="#nz" height="10" width="10" position="0 4 5" rotation="0 180 0" shadow="receive: true"></a-plane>
     </a-scene>
   </body>
 </html>
