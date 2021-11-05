@@ -3,6 +3,7 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <title>6 Planes + Auto Rotate</title>
   </head>
   <body>
     <a-scene>
@@ -31,7 +32,7 @@
 
       <!-- <a-entity geometry="primitive: box; depth: 1; height: 1; width: 1;" material="color: red; shader: flat; roughness: 0"></a-entity> -->
 
-      <a-entity camera orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 10; initialPosition: -1 0 1; autoRotate: false; autoRotateSpeed: 0.1;"></a-entity>
+      <a-entity camera orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 2; initialPosition: -1 0 1; autoRotate: true; autoRotateSpeed: 0.1;"></a-entity>
 
       <a-entity light="type: point; color: white; intensity: 1.5; castShadow: true;" position="0 5 0"></a-entity>
       <!-- <a-entity light="type: ambient; color: white"></a-entity> -->
