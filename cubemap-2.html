@@ -11,12 +11,15 @@
         <img id="town" src="textures/town.jpg">
       </a-assets>
 
+      <a-entity light="type: point; color: white; intensity: 1; castShadow: true;" position="2 10 2"></a-entity>
+      <a-entity light="type: ambient; color: white; intensity: 1; castShadow: false;" shadow="receive: false"></a-entity>
+
       <a-entity scale="10 10 10" position="0 0 0" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
       <a-entity scale="10 10 10" position="2 0 -3" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
 
       <a-box position="-1 0 -5" color="green" roughness="0"></a-box>
       <a-sphere position="1 0 5" color="yellow" roughness="0"></a-sphere>
-      <a-entity camera orbit-controls="target: 0 1 0; minDistance: 0.1; maxDistance: 0.2; initialPosition: 0.1 1.5 0.1; autoRotate: true; autoRotateSpeed: 0.1;"></a-entity>
+      <a-entity camera orbit-controls="target: 0 1.49 0; minDistance: 0.1; maxDistance: 0.5; initialPosition: 0.01 1.5 0.01; autoRotate: true; autoRotateSpeed: 0.1;"></a-entity>
 
       <a-sky src="#town"></a-sky>
     </a-scene>
