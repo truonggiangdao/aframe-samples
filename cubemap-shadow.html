@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+  </head>
+  <body>
+    <script type="module">
+      AFRAME.registerComponent('shadow-material', {
+        init: function () {
+          let el = this.el;
+          let mesh = el.getObject3D('mesh');
+          if (!mesh) return;
+          mesh.material = new THREE.ShadowMaterial();
+          mesh.material.opacity = 0.5;
+        }
+      });
+    </script>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="the-model" src="beagle/scene.gltf"></a-asset-item>
+        <img id="town" src="textures/town.jpg" alt="town">
+      </a-assets>
+
+      <a-entity light="type: point; color: white; intensity: 1; castShadow: true;" position="5 10 5"></a-entity>
+      <a-entity light="type: ambient; color: white; intensity: 1; castShadow: false;" shadow="receive: false"></a-entity>
+
+      <a-entity scale="10 10 10" position="0 0 0" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
+      <a-entity scale="10 10 10" position="2 0 -3" gltf-model="#the-model" shadow="receive: false" animation-mixer></a-entity>
+      <a-box position="-1 0.5 -5" color="green" roughness="0" shadow="receive: false"></a-box>
+      <a-sphere position="1 0.5 5" color="yellow" scale="0.5 0.5 0.5" roughness="0" shadow="receive: false"></a-sphere>
+      <a-sphere position="0 0.5 10" color="blue" scale="0.5 0.5 0.5" roughness="0" shadow="receive: false"></a-sphere>
+      <a-sphere position="-10 0.2 0" color="red" scale="0.2 0.2 0.2" roughness="0" shadow="receive: false"></a-sphere>
+
+      <a-plane color="white" height="100" width="100" position="0 0 0" rotation="-90 0 0" shadow="receive: true" shadow-material></a-plane>
+      <a-entity camera orbit-controls="target: 0 1.49 0; minDistance: 0.1; maxDistance: 0.5; initialPosition: 0.01 1.5 0.01; autoRotate: true; autoRotateSpeed: 0.1;"></a-entity>
+
+      <a-sky src="#town"></a-sky>
+    </a-scene>
+  </body>
+</html>

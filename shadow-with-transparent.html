@@ -1,45 +1,43 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+  <title>Shadow</title>
+</head>
 
-  </head>
-  <body>
-		<script type="module">
-			AFRAME.registerComponent('shadow-material', {
-				init: function(){
-					let el = this.el;
-					let mesh = el.getObject3D('mesh');
-					if (!mesh){return;}
-					mesh.material = new THREE.ShadowMaterial();
-					mesh.material.opacity = 0.5;		
-	
-				}
-			});
-		</script>
-    <a-scene shadow="type: pcfsoft">
-      <a-assets>
-        <img id="town" src="textures/town.jpg" />
-        <a-asset-item id="the-model" src="beagle/scene.gltf"></a-asset-item>
-        <img id="wall" src="textures/material/wall1.jpg">
+<body>
+  <script type="module">
+    AFRAME.registerComponent('shadow-material', {
+      init: function () {
+        let el = this.el;
+        let mesh = el.getObject3D('mesh');
+        if (!mesh) return;
+        mesh.material = new THREE.ShadowMaterial();
+        mesh.material.opacity = 0.5;
+      }
+    });
+  </script>
+  <a-scene shadow="type: pcfsoft">
+    <a-assets>
+      <img id="town" src="textures/town.jpg" />
+      <a-asset-item id="the-model" src="beagle/scene.gltf"></a-asset-item>
+    </a-assets>
+    <a-entity camera
+      orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 2; initialPosition: -1 0 1; autoRotate: true; autoRotateSpeed: 0.1;">
+    </a-entity>
 
-      </a-assets>
-      <a-entity camera orbit-controls="target: 0 0 0; minDistance: 0.5; maxDistance: 2; initialPosition: -1 0 1; autoRotate: true; autoRotateSpeed: 0.1;"></a-entity>
+    <a-entity scale="20 20 20" position="2 -2 -5" gltf-model="#the-model" shadow="receive: false" animation-mixer>
+    </a-entity>
 
-      <a-entity
-        scale="20 20 20"
-        position="2 -2 -5"
-        gltf-model="#the-model"
-        shadow="receive: false"
-        animation-mixer
-      ></a-entity>
+    <a-box position="-1 0 -5" color="green" roughness="0"></a-box>
+    <a-sphere position="1 0 5" color="yellow" roughness="0"></a-sphere>
+    <a-plane color="white" height="5" width="5" position="2 -2 -6" rotation="-90 0 0" shadow="receive: true"
+      shadow-material></a-plane>
 
-      <a-box position="-1 0 -5" color="green" roughness="0"></a-box>
-      <a-sphere position="1 0 5" color="yellow" roughness="0"></a-sphere>
-      <a-plane color="white" height="5" width="5" position="2 -2 -6" rotation="-90 0 0" shadow="receive: true"  shadow-material></a-plane>
-      
-      <a-sky src="#town"></a-sky>
-    </a-scene>
-  </body>
+    <a-sky src="#town"></a-sky>
+  </a-scene>
+</body>
+
 </html>
